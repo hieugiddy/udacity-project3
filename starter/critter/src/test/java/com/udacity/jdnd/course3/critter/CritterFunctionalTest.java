@@ -43,7 +43,7 @@ public class CritterFunctionalTest {
     private ScheduleController scheduleController;
 
     @Test
-    public void testCreateCustomer(){
+    public void testCreateCustomer() throws InterruptedException {
         CustomerDTO customerDTO = createCustomerDTO();
         CustomerDTO newCustomer = userController.saveCustomer(customerDTO);
         CustomerDTO retrievedCustomer = userController.getAllCustomers().get(0);
@@ -53,7 +53,7 @@ public class CritterFunctionalTest {
     }
 
     @Test
-    public void testCreateEmployee(){
+    public void testCreateEmployee() throws InterruptedException {
         EmployeeDTO employeeDTO = createEmployeeDTO();
         EmployeeDTO newEmployee = userController.saveEmployee(employeeDTO);
         EmployeeDTO retrievedEmployee = userController.getEmployee(newEmployee.getId());
@@ -104,6 +104,8 @@ public class CritterFunctionalTest {
         Assertions.assertEquals(pets.get(0).getOwnerId(), newCustomer.getId());
         Assertions.assertEquals(pets.get(0).getId(), newPet.getId());
     }
+
+
 
     @Test
     public void testFindOwnerByPet() {
